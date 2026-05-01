@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="https://convitepremium.com/CarolMendes/img/logo.png">
+  <title id="title"> Carol Mendes - 15 Anos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&family=Zen+Antique&display=swap" rel="stylesheet">
+
+  <style>
+    /* === RESET === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* === GLOBAL === */
+    body {
+      margin: 0px;
+      font-family: Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+    }
+    h1, h2, h3, h4, ul, p, blockquote, dd { margin: 0px; }
+    a { text-decoration: none; color: inherit; }
+
+    /* === TIPOGRAFIA === */
+    .font-1 { font: 1rem "Quicksand", serif !important; }
+    .font-1-p { font: 0.8rem 'Zen Antique', cursive; }
+    .font-1-m { font: 1rem 'Zen Antique', cursive; }
+    .font-2-l { font: 0.9rem "Quicksand", serif !important; letter-spacing: 0.4px; }
+    .font-2 { font: 1.5rem "Playfair Display", serif !important; }
+    .font-2-m { font: 0.7em "Quicksand", sans-serif !important; letter-spacing: 2px !important; }
+    .font-nome {
+      font: 2rem serif !important;
+      letter-spacing: 5px;
+      line-height: 0 !important;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #bd8e34 !important;
+    }
+
+    /* === BODY/HTML === */
+    body, html {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #1a5aae;
+    }
+
+    /* === VIDEO === */
+    .video-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 10;
+      background-color: #1a5aae;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* === ENVELOPE === */
+    .container_envelope {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1.5s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: url("https://convitepremium.com/CarolMendes/img/fundo.png") no-repeat center center fixed;
+      background-size: cover;
+    }
+    .container_envelope.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* === MENU BOTÕES === */
+    ul {
+      list-style: none;
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      z-index: 5000;
+      color: #1a5aae;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .icons { width: 50px; height: 50px; color: #d9d9d9; }
+    .frase {
+      text-align: center;
+      padding-left: 5px;
+      padding-right: 5px;
+      color: #d9d9d9 !important;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    li .frase { font-size: 0.6rem !important; text-transform: uppercase; }
+
+    /* === MODAL === */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(rgba(0,0,0,0.208), rgba(0,0,0,0.542)),
+        url("https://convitepremium.com/CarolMendes/img/fundo.png") center/cover no-repeat;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      overflow: auto;
+      transition: opacity 0.4s ease;
+    }
+    .modal.show { visibility: visible; pointer-events: auto; }
+    .modal.show.ativo { opacity: 1; }
+    .modal-content {
+      margin: 15% auto;
+      padding: 20px;
+      padding-bottom: 50px !important;
+      overflow: scroll;
+      width: 80%;
+      border-radius: 10px;
+      transform: translateY(40px) scale(0.95);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .modal.show.ativo .modal-content { transform: translateY(0) scale(1); opacity: 1; }
+    .modal p {
+      font-size: 0.9rem !important;
+      letter-spacing: 4px;
+      color: white !important;
+      line-height: 1.2;
+      text-align: center;
+    }
+    h2 { text-align: center; }
+    .close {
+      color: white !important;
+      float: right;
+      font-size: 40px;
+      font-weight: bold;
+      position: absolute;
+      right: 25px;
+      top: 20px;
+      cursor: pointer;
+    }
+    .modal h2 {
+      padding-top: 10px;
+      padding-bottom: 20px;
+      font-size: 1rem !important;
+      color: white !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Vídeo inicial -->
+  <div class="video-container">
+    <video id="castleVideo" preload="auto" playsinline>
+      <source src="https://convitepremium.com/CarolMendes/img/inicio.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Convite -->
+  <div class="container_envelope">
+    <ul>
+      <li>
+        <a href="https://presenca-xv.github.io/xvcarol/convite.html" target="_blank">
+          <img src="https://convitepremium.com/CarolMendes/img/confirmar.svg" class="icons">
+          <p class="frase font-2-m">Confirme <br>presença</p>
+        </a>
+      </li>
+      <li>
+        <a href="#" data-target="vestimenta" class="anime">
+          <img src="https://convitepremium.com/CarolMendes/img/dress.svg" class="icons">
+          <p class="frase font-2-m">Dress <br>code</p>
+        </a>
+      </li>
+      <li>
+        <a href="https://maps.app.goo.gl/nNYXXzx6muVVAwCk6" target="_blank">
+          <img src="https://convitepremium.com/CarolMendes/img/local.svg" class="icons">
+          <p class="frase font-2-m">Ver <br>rota</p>
+        </a>
+      </li>
+      <li>
+        <a href="#" data-target="presentes" class="anime">
+          <img src="https://convitepremium.com/CarolMendes/img/presentes.svg" class="icons">
+          <p class="frase font-2-m">Presentear <br>Carol</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Modal Vestimenta -->
+  <div class="modal" id="modal-vestimenta">
+    <span class="close-btn close">&times;</span>
+    <div class="modal-content" style="height: 40% !important;">
+      <h2 class="font-2-m">Dress code:</h2>
+      <p class="font-2-m">passeio completo</p>
+    </div>
+  </div>
+
+  <!-- Modal Presentes -->
+  <div class="modal" id="modal-presentes">
+    <span class="close-btn close">&times;</span>
+    <div class="modal-content" style="height: 95% !important;">
+      <h2 class="font-2-m">
+        O melhor presente é a sua presença nesse dia tão especial!!
+        Mas, caso queira me presentear, deixo algumas sugestões:
+      </h2>
+      <p class="font-2-m" style="padding-top: 10px;">• Itens de auto cuidado</p>
+      <p class="font-2-m" style="padding-top: 10px;">• Roupas de academia (tamanho PP)</p>
+      <p class="font-2-m" style="padding-top: 10px;">• Tops, shorts ou vestidos (tamanho PP)</p>
+      <p class="font-2-m" style="padding-top: 10px;">• Sapatos (tamanho 34)</p>
+      <p class="font-2-m" style="padding-top: 10px;">• Bolsas</p>
+      <p class="font-2-m" style="padding-top: 10px;">• Maquiagens</p>
+      <p class="font-2-m" style="padding-top: 10px;">• Joias e acessórios pratas ou dourados (anéis tamanho 12 e pulseiras tamanho 16)</p>
+      <p class="font-2-m" style="padding-top: 10px;">• Perfumes doces</p>
+      <p class="font-2-m" style="padding-top: 10px;">
+        Sugestão de lojas:<br>
+        Vivara<br>Pandora<br>Live<br>Sephora<br>Kiko<br>Zara<br>Farm<br>Mac
+      </p>
+    </div>
+  </div>
+
+  <!-- Áudio -->
+  <audio id="audio">
+    <source src="https://convitepremium.com/CarolMendes/audio/musica.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    const video = document.getElementById('castleVideo');
+    const containerEnvelope = document.querySelector('.container_envelope');
+    const videoContainer = document.querySelector('.video-container');
+    const audio = document.getElementById('audio');
+
+    window.addEventListener('load', () => {
+      video.load();
+      video.currentTime = 0;
+    });
+
+    let audioReady = false;
+    let overlayShown = false;
+
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        audioReady = true;
+      }
+    });
+
+    video.addEventListener('timeupdate', () => {
+      const timeLeft = video.duration - video.currentTime;
+      if (timeLeft <= 1 && !overlayShown) {
+        overlayShown = true;
+        containerEnvelope.classList.add('show');
+      }
+    });
+
+    video.addEventListener('ended', () => {
+      videoContainer.style.display = 'none';
+      if (audioReady) audio.play();
+    });
+
+    // Modais
+    document.querySelectorAll('.anime').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = this.getAttribute('data-target');
+        const modal = document.getElementById(`modal-${target}`);
+        if (modal) {
+          modal.classList.add('show');
+          setTimeout(() => modal.classList.add('ativo'), 10);
+        }
+      });
+    });
+
+    document.querySelectorAll('.close-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const modal = this.closest('.modal');
+        modal.classList.remove('ativo');
+        setTimeout(() => modal.classList.remove('show'), 400);
+      });
+    });
+
+    window.addEventListener('click', function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.classList.remove('ativo');
+          setTimeout(() => modal.classList.remove('show'), 400);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
